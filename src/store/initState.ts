@@ -4,7 +4,7 @@
  *@ use: store -> initState
  */
 
-import {ITodoModel} from '../page/home/modules/models';
+import {ITodoModel} from '../containers/home/modules/models';
 
 export interface IRootState {
     todo: ITodoModel;

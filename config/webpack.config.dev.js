@@ -9,6 +9,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const px2rem = require('postcss-px2rem');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -39,7 +40,7 @@ module.exports = {
     // Include an alternative client for WebpackDevServer. A client's job is to
     // connect to WebpackDevServer by a socket and get notified about changes.
     // When you save a file, the client will either apply hot updates (in case
-    // of CSS changes), or refresh the page (in case of JS changes). When you
+    // of CSS changes), or refresh the containers (in case of JS changes). When you
     // make a syntax error, this client will display a syntax error overlay.
     // Note: instead of the default WebpackDevServer client, we use a custom one
     // to bring better experience for Create React App users. You can replace
@@ -160,10 +161,6 @@ module.exports = {
               },
             ],
           },
-          {
-            test: /\.styl$/,
-            loaders: ['style-loader', 'css-loader', 'stylus-loader']
-          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -196,6 +193,7 @@ module.exports = {
                       ],
                       flexbox: 'no-2009',
                     }),
+                    px2rem({remUnit: 75})
                   ],
                 },
               },
@@ -216,6 +214,11 @@ module.exports = {
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
+          },
+          {
+            test: /\.styl$/,
+            include: paths.appSrc,
+            loaders: ['style-loader', 'css-loader', 'stylus-loader']
           },
         ],
       },

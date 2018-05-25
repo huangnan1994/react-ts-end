@@ -1,5 +1,11 @@
-body {
+/**
+*@ time:
+*@ author: 二 白
+*@ use:
+*/
+.App {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  background-color: #f00;
+  height: 200px;
 }

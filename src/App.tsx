@@ -1,9 +1,9 @@
-import {Button} from 'antd';
 import * as React from 'react';
-import './App.css';
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {addTodo} from './page/home/modules/anctions';
+import {addTodo} from './containers/home/modules/anctions';
+import LeftLand from './components/Sider';
+import './index.styl';
 
 interface IAppProps {
     addTodo?: any;
@@ -16,13 +16,9 @@ class App extends React.Component<IAppProps> {
     }
 
     public render() {
-        console.log(this.props);
         return (
-            <div className="App">
-                <Button onClick={() => {
-                    console.log(this.props.addTodo());
-                    this.props.addTodo({text: '12'})
-                }} type="primary">Button</Button>
+            <div className='App'>
+                <LeftLand/>
             </div>
         );
     }

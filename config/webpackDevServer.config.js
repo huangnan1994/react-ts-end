@@ -49,7 +49,7 @@ module.exports = function(proxy, allowedHost) {
     // for some reason broken when imported through Webpack. If you just want to
     // use an image, put it in `src` and `import` it from JavaScript instead.
     contentBase: paths.appPublic,
-    // By default files from `contentBase` will not trigger a page reload.
+    // By default files from `contentBase` will not trigger a containers reload.
     watchContentBase: true,
     // Enable hot reloading server. It will provide /sockjs-node/ endpoint
     // for the WebpackDevServer client so it can learn when the files were
