@@ -3,8 +3,6 @@ import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import Routers from './containers/Routers';
-import './index.css';
-import 'lib-flexible';
 import createHistory from 'history/createBrowserHistory'
 import {configureStore} from './store';
 

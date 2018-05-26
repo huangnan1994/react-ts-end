@@ -3,7 +3,7 @@ import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import {addTodo} from './containers/home/modules/anctions';
 import LeftLand from './components/Sider';
-import './index.styl';
+import './App.less';
 
 interface IAppProps {
     addTodo?: any;
