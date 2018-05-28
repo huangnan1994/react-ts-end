@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import Index from './containers/Index';
+import Routers from './containers/Routers';
 import createHistory from 'history/createBrowserHistory'
 import {configureStore} from './store';
 
@@ -11,7 +11,7 @@ const store = configureStore(history);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Index/>
+        <Routers/>
     </Provider>
     ,
     document.getElementById('root') as HTMLElement

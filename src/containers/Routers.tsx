@@ -10,6 +10,7 @@ import {
     Switch
 } from "react-router-dom";
 import Home from '../App';
+import Login from '../containers/login/pages/Login';
 
 class Routers extends React.Component {
     public render() {
@@ -18,7 +19,8 @@ class Routers extends React.Component {
                 <Route render={({location}) => {
                     return (
                         <Switch key={location.pathname}>
-                            <Route location={location} path="/" component={Home}/>
+                            <Route location={location} path="/" component={Login}/>
+                            <Route location={location} path="/home" component={Home}/>
                             {/*<Route component={NoMatch}/>*/}
                         </Switch>
                     )
