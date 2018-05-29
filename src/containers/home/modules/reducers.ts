@@ -15,7 +15,9 @@ const initialState: ITodoModel = {
 };
 
 export const todoReducer = handleActions<ITodoModel>({
-    [ADD_TODO]: () => {
-        return {completed: true, text: '112', id: 2};
+    [ADD_TODO]: (state: any, action: any) => {
+        console.log('reducer->state:', state);
+        console.log('reducer->action:', action);
+        return {completed: true, text: action.payload.text, id: 2};
     },
 }, initialState);

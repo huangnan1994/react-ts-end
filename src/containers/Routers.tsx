@@ -19,7 +19,7 @@ class Routers extends React.Component {
                 <Route render={({location}) => {
                     return (
                         <Switch key={location.pathname}>
-                            <Route location={location} path="/" component={Login}/>
+                            <Route location={location} exact={true} path="/" component={Login}/>
                             <Route location={location} path="/home" component={Home}/>
                             {/*<Route component={NoMatch}/>*/}
                         </Switch>
