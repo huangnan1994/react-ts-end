@@ -35,7 +35,7 @@
  
 `(2) 新建一个types.ts`
 
-     // action 的标识符  
+     // action 的唯一标识符  
      export const ADD_TODO = 'ADD_TODO';
 `(3) 新建一个anctions.ts`
     
