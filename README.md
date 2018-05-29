@@ -197,9 +197,9 @@ _3. store->reducer.ts_
     };
     
     // mapStateToProps(state, ownProps) 方法允许我们将store中的数据作为props绑定到组件中，
-    只要store更新了就会调用mapStateToProps方法，
-    mapStateToProps返回的结果必须是object对象，该对象中的值将会更新到组件中;
+     只要store更新了就会调用mapStateToProps方法，
+     mapStateToProps返回的结果必须是object对象，该对象中的值将会更新到组件中;
     
     // mapDispatchToProps(dispatch, [ownProps]) 第二个参数允许我们将action作为props绑定到组件中，
-    mapDispatchToProps希望你返回包含对应action的object对象; 
+     mapDispatchToProps希望你返回包含对应action的object对象; 
     export default connect(mapStateToProps, mapDispatchToProps)(App);
