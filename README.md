@@ -16,18 +16,42 @@ TypeScript是JavaScript类型的超集(强类型版本)，它可以编译成纯�
 
    创建一个项目(TypeScript版本)
     
-     npx create-react-app 应用名称 --scripts-version=react-scripts-ts
+     npx create-react-app 项目名称 --scripts-version=react-scripts-ts
        
 **2.安装所需依赖包**  
       
      yarn add history @types/history react-router-dom @types/react-router-dom react-router-redux @types/react-router-redux redux-actions @types/redux-actions redux-thunk @types/redux-thunk redux --D
-  *注意: redux 已经包含TypeScript包
+  *注意:
   
+  (1).redux 已经包含TypeScript包
+  
+  (2).redux-thunk:2.20目前会报语法错误，解决方法:
+  
+  修改node_modules/redux-thunk/index.d.ts
+     
+     import { Middleware, Dispatch, Action, AnyAction } from 'redux';
+     
+     export type ThunkAction<R, S, A extends Action = AnyAction, E = {}> = {
+         (dispatch: Dispatch<A, S>, getState: () => S, extraArgument: E): R
+     }
+     
+     declare module 'redux' {
+         export interface Dispatch<A extends Action = AnyAction, S = {}> {
+             <R, E>(thunk: ThunkAction<R, S, A, E>): R
+         }
+     }
+     
+     declare const thunk: Middleware & {
+         withExtraArgument(extraArgument: any): Middleware;
+     };
+     
+     export default thunk;
+   
 **3.开始编码**
 
 `(1) 新建一个models.ts`
 
-     // 规定store中初始状态的数据类型
+     // store中初始状态的接口声明
      export interface ITodoModel {
          id?: number;
          text: string;
@@ -41,7 +65,8 @@ TypeScript是JavaScript类型的超集(强类型版本)，它可以编译成纯�
 `(3) 新建一个anctions.ts`
     
       /**
-      *** store中状态是只读的,要改变它里面的状态只能分发action去改变其属性  
+      *** 因为store中状态是只读的(可以使用store.getState()来获取整个store的状态)
+      *** 要改变它里面的状态只能分发一个action去改变其属性  
       **/
       
       // createAction 让你可以轻松创建一个action
